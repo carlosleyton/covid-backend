@@ -19,6 +19,7 @@ public class CountriesServiceApplication {
 
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+		@GetMapping("/countries/")
 		return args -> {
 			CountryResumeDomain countryResumeDomain = restTemplate.getForObject(
 					"https://api.covid19api.com/summary", CountryResumeDomain.class);

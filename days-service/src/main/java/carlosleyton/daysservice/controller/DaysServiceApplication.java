@@ -19,10 +19,10 @@ public class DaysServiceApplication {
 
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-		@GetMapping("/list")
+		@GetMapping("/days/{country}")
 		return args -> {
 			DaysCountry daysCountry = restTemplate.getForObject(
-					"https://api.covid19api.com/country/{country}", DaysCountry.class);
+					"https://api.covid19api.com/country/(@PathVariable("countryName") String countryName", DaysCountry.class);
 			log.info(daysCountry.toString());
 		};
 	}
